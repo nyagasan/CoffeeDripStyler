@@ -14,7 +14,7 @@ public class CoffeeMaker {
         this.strengthPreference = strengthPreference;
     }
 
-    // ここに抽出ロジックを実装
+    // 抽出ロジックを実装
     public List<String[]> startBrewing() {
         List<String[]> brewingSteps = new ArrayList<>();
 
@@ -58,14 +58,22 @@ public class CoffeeMaker {
         }
 
         // 抽出ステップの計算
+
+        // 抽出ステップの計算
         int totalTime = 0;
-        brewingSteps.add(new String[]{"0秒", String.valueOf(firstPour) + "g", String.valueOf(firstPour) + "g"});
+        int totalAmount = 0; // 総量の初期化
+
+        totalAmount += firstPour;
+        brewingSteps.add(new String[]{"0秒", String.valueOf(firstPour) + "g", String.valueOf(totalAmount) + "g"});
         totalTime += 45;
-        brewingSteps.add(new String[]{"45秒", String.valueOf(secondPour) + "g", String.valueOf(firstPour + secondPour) + "g"});
+
+        totalAmount += secondPour;
+        brewingSteps.add(new String[]{"45秒", String.valueOf(secondPour) + "g", String.valueOf(totalAmount) + "g"});
 
         for (int pour : concentrationPours) {
             totalTime += 45;
-            brewingSteps.add(new String[]{totalTime / 60 + "分" + totalTime % 60 + "秒", pour + "g", (firstPour + secondPour + pour) + "g"});
+            totalAmount += pour;
+            brewingSteps.add(new String[]{totalTime / 60 + "分" + totalTime % 60 + "秒", pour + "g", String.valueOf(totalAmount) + "g"});
         }
 
         return brewingSteps;
