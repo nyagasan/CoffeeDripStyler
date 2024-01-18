@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="DripStyler:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/DripStyler_jar</output-path>
+    <root id="archive" name="DripStyler.jar">
+      <element id="module-output" name="DripStyler" />
+    </root>
+  </artifact>
+</component>
